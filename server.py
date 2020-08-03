@@ -33,8 +33,11 @@ def chromakey_background(img, background):
 def index():
     html = """
         <form action=/upload method=post enctype="multipart/form-data">
-            <input type=file name=file1> 
-            <input type=file name=file2> <input type=submit value="전송">
+            <h1>크로마키 배경 합성</h1>
+            <p><h5>크로마키 원본 파일:</h5> <input type=file name=file1> </p>
+            <p><h5>배경 파일:</h5> <input type=file name=file2> </p>
+            <br>
+            <input type=submit value="전송">
         </form>
     """
     return html
