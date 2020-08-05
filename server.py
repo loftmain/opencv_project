@@ -1,5 +1,4 @@
-
-from flask import Flask, request
+from flask import Flask, request, render_template
 import cv2
 import numpy as np
 import time
@@ -31,33 +30,24 @@ def chromakey_background(img, background):
 
 @app.route('/')
 def index():
-    html = """
-        <form action=/upload method=post enctype="multipart/form-data">
-            <h1>크로마키 배경 합성</h1>
-            <p><h5>크로마키 원본 파일:</h5> <input type=file name=file1> </p>
-            <p><h5>배경 파일:</h5> <input type=file name=file2> </p>
-            <br>
-            <input type=submit value="전송">
-        </form>
-    """
-    return html
+    return render_template("imageprocessing.html", ctx={"title":"영상처리"})
 
 @app.route('/upload', methods=["post"])
 def upload():
     f = request.files["file1"]
     filename = "./static/" + f.filename
     f.save(filename)
-    
+
     f1 = request.files["file2"]
     filename1 = "./static/" + f1.filename
     f1.save(filename1)
-    
+
     img = cv2.imread(filename)
     img = cv2.resize(img, dsize=(320, 240))
-    
+
     background = cv2.imread(filename1)
     background = cv2.resize(background, dsize=(320, 240))
-    
+
     img = chromakey_background(img, background)
     cv2.imwrite(filename, img)
 
