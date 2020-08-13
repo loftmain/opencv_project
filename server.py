@@ -10,7 +10,7 @@ def index():
     """
     return html
 
-datas = []
+datas = [45.7, 45, 10, 70.8]
 
 @app.route('/signal')
 def signal():
@@ -23,7 +23,6 @@ def view():
     global datas # global 변수인 것 명시
     
     html = """
-    <meta http-equiv="refresh" content="5;url=/view" />
     """ + str(datas)
     return html
 
