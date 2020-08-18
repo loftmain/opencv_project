@@ -115,6 +115,10 @@ function save() {
 
 <body>
     <form id = "myForm" action="/upload" method="POST" enctype="multipart/form-data">
+        <select name=mode>
+          <option value="digit">숫자인식</option>
+          <option value="korean">한글 인식</option>
+        </select>
         <canvas id="canvas", name ="draw" width="200" height="200">
         <script type="text/javascript">
             $(document).ready(function() {
