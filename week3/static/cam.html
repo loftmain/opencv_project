@@ -52,7 +52,7 @@ function take_snapshot() {
                 '<img id="imageprev" width=120  src="'+data_uri+'"/>';
             $.post('/image', {
                 photo_cap: data_uri,
-            },function(data){                
+            },function(data){
                 alert(data);
                 //document.getElementById('out').innerHTML = data;
             });
